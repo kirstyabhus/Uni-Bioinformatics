@@ -1,0 +1,12 @@
+
+x <- c(5,9,2,3,4,6,7,0,8,12,2,9)
+# a)
+sum(x[1:4])
+# b)
+max(x)
+# c)
+match(max(x), x) 
+# d)
+match(max(x), rev(x))
+# e)
+length(x[x < 10 & x > 5])
