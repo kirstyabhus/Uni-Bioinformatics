@@ -1,10 +1,13 @@
 library(readr)
-counts_file<- read_csv("RNAseq/SRP049988.raw_counts.csv")
-coldata_file <- read_delim("RNAseq/SRP049988.colData.tsv",
-                           "\t", escape_double = FALSE, trim_ws = TRUE)
-counts_file=counts_file[counts_file$width>0,]
+
+# read and store the count matrix and the related annotation files
+counts_file <- read_csv("RNAseq/SRP049988.raw_counts.csv")
+coldata_file <- read_delim("RNAseq/SRP049988.colData.tsv", "\t", escape_double = FALSE, trim_ws = TRUE)
+
+counts_file = counts_file[counts_file$width>0,]
 counts <- as.matrix(counts_file[-1], header = T)
-# find name of first column (the name of this column so we can count the number of rows)
+
+# find name of the first column (the name of this column so we can count the number of rows)
 names(counts_file)
 rownames(counts) <- counts_file$...1
 coldata <- as.data.frame(coldata_file$group)
